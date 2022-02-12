@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.14)
 
+include_directories(vendor/glm)
+
 add_subdirectory(vendor/glfw)
 add_subdirectory(vendor/glad)
+add_subdirectory(vendor/glm)
 
 project("Orbenon++")
 

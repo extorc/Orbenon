@@ -1,6 +1,7 @@
 #include <iostream>
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "glm/glm.hpp"
 
 int main(){
   GLFWwindow* window;
@@ -38,7 +39,6 @@ int main(){
     glClearColor(1,0,0,1);
 
     glDrawArrays(GL_TRIANGLES, 0, 3);
-
     glfwPollEvents();
     glfwSwapBuffers(window);
   }
