@@ -1,4 +1,5 @@
 #include <iostream>
+#include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
 int main(){
@@ -16,7 +17,13 @@ int main(){
 
   glfwMakeContextCurrent(window);
 
+  if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
+    std::cout << "Failed to initialize OpenGL context" << std::endl;
+  }
+
   while(!glfwWindowShouldClose(window)){
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(1,0,0,1);
     glfwPollEvents();
     glfwSwapBuffers(window);
   }
