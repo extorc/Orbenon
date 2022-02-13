@@ -2,6 +2,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #include "Shader.h"
 
 int main(){
@@ -38,6 +39,9 @@ int main(){
   std::string v = Shader::parseFile("C:/dev/Orbenon++/Vertex.glsl");
   std::string f = Shader::parseFile("C:/dev/Orbenon++/Fragment.glsl");
   Shader shader(v.c_str(), f.c_str());
+
+  glm::mat4 proj = glm::ortho(-1.33f, 1.33f, -1.0f, 1.0f, -1.0f, 1.0f);
+  Shader::SetMat4(shader.GetProgram(),"proj", proj);
 
   while(!glfwWindowShouldClose(window)){
     glClear(GL_COLOR_BUFFER_BIT);
