@@ -5,6 +5,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "Shader.h"
 #include "Loader.h"
+#include "Renderer.h"
 
 int main(){
   GLFWwindow* window;
@@ -32,7 +33,7 @@ int main(){
     0,1,2,0,2,3
   };
 
-  Loader::Load(pos, ind);
+  Object obj1 = Loader::Load(pos, ind);
 
   std::string v = Shader::parseFile("C:/dev/Orbenon++/Vertex.glsl");
   std::string f = Shader::parseFile("C:/dev/Orbenon++/Fragment.glsl");
@@ -42,10 +43,9 @@ int main(){
   Shader::SetMat4(shader.GetProgram(),"proj", proj);
 
   while(!glfwWindowShouldClose(window)){
-    glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(.84, .84, .84, 1);
-
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+    Renderer::PrepareColor();
+    Renderer::Render(obj1);
+    
     glfwPollEvents();
     glfwSwapBuffers(window);
   }

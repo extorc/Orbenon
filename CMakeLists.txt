@@ -8,6 +8,8 @@ add_subdirectory(vendor/glm)
 
 project("Orbenon")
 
-add_executable(${PROJECT_NAME} src/main.cpp src/Shader.cpp src/Loader.cpp)
+file(GLOB_RECURSE SRC src/**.cpp src/**/**.cpp)
+add_executable(${PROJECT_NAME} ${SRC})
+
 target_include_directories(${PROJECT_NAME} PUBLIC glfw GLAD)
 target_link_libraries(${PROJECT_NAME} PUBLIC glfw GLAD)

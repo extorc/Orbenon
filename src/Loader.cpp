@@ -1,6 +1,10 @@
 #include "Loader.h"
 
-void Loader::Load(float* pos, unsigned int* ind){
+Object Loader::Load(float* pos, unsigned int* ind){
+  unsigned int vao;
+  glGenVertexArrays(1, &vao);
+  glBindVertexArray(vao);
+
   unsigned int buffer;
   glGenBuffers(1, &buffer);
   glBindBuffer(GL_ARRAY_BUFFER, buffer);
@@ -13,4 +17,6 @@ void Loader::Load(float* pos, unsigned int* ind){
   glGenBuffers(1, &ibuffer);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibuffer);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), ind, GL_STATIC_DRAW);
+
+  return {vao, 6};
 }
