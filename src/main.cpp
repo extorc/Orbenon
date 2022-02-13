@@ -2,6 +2,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "glm/glm.hpp"
+#include "Shader.h"
 
 int main(){
   GLFWwindow* window;
@@ -10,7 +11,7 @@ int main(){
     std::cout<<"GLFW not initialized"<<std::endl;
   }
 
-  window = glfwCreateWindow(800,600, "Orbenon++", 0, 0);
+  window = glfwCreateWindow(800,600, "Orbenon", 0, 0);
 
   if(!window){
     std::cout<<"Window not created"<<std::endl;
@@ -33,6 +34,10 @@ int main(){
 
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
+
+  std::string v = Shader::parseFile("C:/dev/Orbenon++/Vertex.glsl");
+  std::string f = Shader::parseFile("C:/dev/Orbenon++/Fragment.glsl");
+  Shader shader(v.c_str(), f.c_str());
 
   while(!glfwWindowShouldClose(window)){
     glClear(GL_COLOR_BUFFER_BIT);
