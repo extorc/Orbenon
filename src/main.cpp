@@ -26,7 +26,7 @@ int main(){
   }
 
   float pos[] = {
-    0.5, 0.5,-0.5, 0.5,-0.5,-0.5, 0.5,-0.5
+    0.025, 0.025,-0.025, 0.025,-0.025,-0.025, 0.025,-0.025
   };
   unsigned int ind[] = {
     0,1,2,0,2,3
@@ -43,7 +43,7 @@ int main(){
 
   while(!glfwWindowShouldClose(window)){
     glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(1,0,0,1);
+    glClearColor(.84, .84, .84, 1);
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
     glfwPollEvents();

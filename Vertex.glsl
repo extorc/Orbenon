@@ -7,5 +7,5 @@ uniform mat4 proj;
 
 void main(){
   gl_Position = proj * vec4(pos, 1.0);
-  vcol = vec4(pos, 1.0);  
+  vcol = vec4(1, 0, 0, 1.0);  
 }
