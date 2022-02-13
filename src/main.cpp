@@ -6,25 +6,10 @@
 #include "Shader.h"
 #include "Loader.h"
 #include "Renderer.h"
+#include "Window.h"
 
 int main(){
-  GLFWwindow* window;
-
-  if(!glfwInit()){
-    std::cout<<"GLFW not initialized"<<std::endl;
-  }
-
-  window = glfwCreateWindow(800,600, "Orbenon", 0, 0);
-
-  if(!window){
-    std::cout<<"Window not created"<<std::endl;
-  }
-
-  glfwMakeContextCurrent(window);
-
-  if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-    std::cout << "Failed to initialize OpenGL context" << std::endl;
-  }
+  Window window;
 
   float pos[] = {
     0.025, 0.025,-0.025, 0.025,-0.025,-0.025, 0.025,-0.025
@@ -42,12 +27,12 @@ int main(){
   glm::mat4 proj = glm::ortho(-1.33f, 1.33f, -1.0f, 1.0f, -1.0f, 1.0f);
   Shader::SetMat4(shader.GetProgram(),"proj", proj);
 
-  while(!glfwWindowShouldClose(window)){
+  while(window.ShouldClose()){
     Renderer::PrepareColor();
     Renderer::Render(obj1);
-    
-    glfwPollEvents();
-    glfwSwapBuffers(window);
+
+    window.Update();
+    window.Render();
   }
 
   glfwTerminate();
