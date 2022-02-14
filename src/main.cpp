@@ -20,8 +20,8 @@ int main(){
 
   Object* obj1 = Loader::Load(pos, ind);
 
-  std::string v = Shader::parseFile("C:/dev/Orbenon++/Vertex.glsl");
-  std::string f = Shader::parseFile("C:/dev/Orbenon++/Fragment.glsl");
+  std::string v = Shader::parseFile("../Vertex.glsl");
+  std::string f = Shader::parseFile("../Fragment.glsl");
   Shader shader(v.c_str(), f.c_str());
 
   glm::mat4 proj = glm::ortho(-800.0f, 800.0f, -600.0f, 600.0f, -1.0f, 1.0f);
