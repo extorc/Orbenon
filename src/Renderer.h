@@ -9,5 +9,5 @@ public:
     glClearColor(.84, .84, .84, 1);
   }
 
-  static void Render(Object obj);
+  static void Render(Object* obj);
 };
