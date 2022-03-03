@@ -27,9 +27,16 @@ int main(){
   glm::mat4 proj = glm::ortho(-800.0f, 800.0f, -600.0f, 600.0f, -1.0f, 1.0f);
   Shader::SetMat4(shader.GetProgram(),"proj", proj);
 
+  double previousTime = glfwGetTime();
+  float deltaTime = 0.2;
 
+  obj1->accelerationY = -1.0f;
   while(window.ShouldClose()){
-    // obj1->Displace(.00005, .00005);
+    double currentTime = glfwGetTime();
+    double deltaTime = currentTime-previousTime;
+    previousTime = currentTime;
+
+    obj1->Update(deltaTime);
     Shader::SetMat4(shader.GetProgram(),"transform", obj1->GetTransform());
 
     Renderer::PrepareColor();

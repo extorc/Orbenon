@@ -17,6 +17,8 @@ Window::Window(){
   if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
     std::cout << "Failed to initialize OpenGL context" << std::endl;
   }
+
+  glfwSwapInterval(1);
 }
 bool Window::ShouldClose(){
   return !glfwWindowShouldClose(window);
